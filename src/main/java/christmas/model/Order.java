@@ -3,7 +3,6 @@ package christmas.model;
 import christmas.view.InputView;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class Order {
     private final HashMap<Menu, Integer> orders;

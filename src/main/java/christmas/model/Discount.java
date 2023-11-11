@@ -3,12 +3,11 @@ package christmas.model;
 import java.util.List;
 
 public class Discount {
-    private final int visiteDate;
-
     private final List<DiscountType> discounts;
 
-    public Discount(int visiteDate, List<DiscountType> discounts) {
-        this.visiteDate = visiteDate;
+    public Discount(List<DiscountType> discounts) {
         this.discounts = discounts;
     }
+
+//    날짜를 매개변수에 받고, 어떤 할인이 해당되는지 반환
 }
