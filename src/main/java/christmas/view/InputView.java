@@ -5,5 +5,4 @@ public class InputView {
 
 //    주문할 메누, 개수 입력
 
-
 }

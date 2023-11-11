@@ -1,18 +1,14 @@
 package christmas.model;
 
+import java.util.List;
+
 public class Discount {
     private final int visiteDate;
-    private final boolean christmasDayDiscount;
-    private final boolean weekdayDiscount;
-    private final boolean weekendDiscount;
-    private final boolean specialDiscount;
 
-    public Discount(int visiteDate, boolean christmasDayDiscount, boolean weekdayDiscount,
-                    boolean weekendDiscount, boolean specialDiscount) {
+    private final List<DiscountType> discounts;
+
+    public Discount(int visiteDate, List<DiscountType> discounts) {
         this.visiteDate = visiteDate;
-        this.christmasDayDiscount = christmasDayDiscount;
-        this.weekdayDiscount = weekdayDiscount;
-        this.weekendDiscount = weekendDiscount;
-        this.specialDiscount = specialDiscount;
+        this.discounts = discounts;
     }
 }
