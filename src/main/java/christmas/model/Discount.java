@@ -6,22 +6,15 @@ import java.util.List;
 
 public class Discount {
     private final List<DiscountType> discounts;
-    private final int visitDate;
+//
 
-    public Discount(List<DiscountType> discounts, int visitDate) {
+    public Discount(List<DiscountType> discounts) {
         this.discounts = discounts;
-        this.visitDate = visitDate;
     }
 
-    public Discount(String visitDate) {
-        this.visitDate = validate(visitDate);
-    }
 
-    private int validate(String date) {
-        int intDate = InputValidator.isDigit(date);
-        InputValidator.outOfRange(intDate);
-        return intDate;
-    }
+
+
 
     //    총 주문 금액 10,000원 이상부터 이벤트(할인?) 적용
     public boolean isDiscout(int payment){
