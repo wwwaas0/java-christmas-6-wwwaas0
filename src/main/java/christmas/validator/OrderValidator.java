@@ -14,14 +14,14 @@ public class OrderValidator {
             }
         }
         if (othersWithoutDrinks == false) {
-            throw new IllegalArgumentException("음료만 주문시 주문 불가합니다.");
+            throw new IllegalArgumentException("[ERROR] 음료만 주문시 주문 불가합니다.");
         }
     }
 
     //    메뉴는 한번에 최대 20개까지만 주문 가능
     public static void maxOrder(HashMap<Menu, Integer> orders) {
         if (orders.keySet().size() > 20) {
-            throw new IllegalArgumentException("메뉴는 한 번에 최대 20개까지만 주문 가능합니다.");
+            throw new IllegalArgumentException("[ERROR] 메뉴는 한 번에 최대 20개까지만 주문 가능합니다.");
         }
     }
 

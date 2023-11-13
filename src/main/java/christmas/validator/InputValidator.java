@@ -13,14 +13,14 @@ public class InputValidator {
         try {
             return Integer.parseInt(date);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력이 숫자가 아닙니다.");
+            throw new IllegalArgumentException("[ERROR] 입력이 숫자가 아닙니다.");
         }
     }
 
     //    1~31 벗어난 숫자 입력
     public static void outOfRange(int date) {
         if (date < 1 || date > 31) {
-            throw new IllegalArgumentException("없는 날짜입니다.");
+            throw new IllegalArgumentException("[ERROR] 없는 날짜입니다.");
         }
     }
 
@@ -29,7 +29,7 @@ public class InputValidator {
     public static void notOnTheMenu(HashMap<Menu, Integer> orders) {
         for (Menu menu : orders.keySet()) {
             if (!menuExists(menu)) {
-                throw new IllegalArgumentException("메뉴판에 없는 메뉴가 주문되었습니다");
+                throw new IllegalArgumentException("[ERROR] 메뉴판에 없는 메뉴가 주문되었습니다");
             }
         }
     }
@@ -43,7 +43,7 @@ public class InputValidator {
     public static void moreThan1(Collection<Integer> numbers) {
         for (Integer number : numbers) {
             if (number < 1) {
-                throw new IllegalArgumentException("메뉴의 개수가 1보다 적습니다.");
+                throw new IllegalArgumentException("[ERROR] 메뉴의 개수가 1보다 적습니다.");
             }
         }
     }
