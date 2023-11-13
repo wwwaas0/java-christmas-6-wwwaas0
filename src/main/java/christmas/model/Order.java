@@ -9,17 +9,20 @@ import java.util.List;
 
 public class Order {
     private final HashMap<Menu, Integer> orders;
-    private final int totalPayment;
+//    private final int totalPayment;
 
-    public Order(HashMap<Menu, Integer> orders, int totalPayment) {
+    public Order(HashMap<Menu, Integer> orders) {
         this.orders = orders;
-        this.totalPayment = totalPayment;
     }
 
-    public HashMap<Menu, Integer> orderProcessing(String orders){
-        try{
+    public Order(String orders) {
+        this.orders = orderProcessing(orders);
+    }
+
+    private HashMap<Menu, Integer> orderProcessing(String orders) {
+        try {
             List<String> orderItems = List.of(orders.split(","));
-            for(String item: orderItems){
+            for (String item : orderItems) {
                 List<String> menuAndNumber = List.of(item.split("-"));
                 Menu menu = getMenuByKoreanName(menuAndNumber.get(0));
                 int menuNumber = this.orders.getOrDefault(menu, 0) + Integer.parseInt(menuAndNumber.get(1));
@@ -27,7 +30,7 @@ public class Order {
             }
             validate(this.orders);
             return this.orders;
-        } catch(Exception e){
+        } catch (Exception e) {
             throw new IllegalArgumentException("알맞지 않은 주문 형식입니다.");
         }
     }
@@ -41,7 +44,7 @@ public class Order {
         return null;
     }
 
-    private void validate(HashMap<Menu, Integer> orders){
+    private void validate(HashMap<Menu, Integer> orders) {
         InputValidator.notOnTheMenu(orders);
         InputValidator.moreThan1(orders.values());
         OrderValidator.maxOrder(orders);

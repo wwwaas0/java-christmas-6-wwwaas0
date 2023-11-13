@@ -20,8 +20,9 @@ public class InputController {
     /*
     InputView에서 입력 받은 후, Order 객체의 해시맵에 저장
      */
-    public VisitDate getOrders(){
-
+    public Order getOrders(){
+        Order order = new Order(InputView.orderMenus());
+        return order;
     }
 
 //    크리스마스 디데이 할인의 1000원에 추가로 적용되는 +a 구하기
