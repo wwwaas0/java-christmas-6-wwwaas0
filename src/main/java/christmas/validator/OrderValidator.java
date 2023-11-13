@@ -26,4 +26,10 @@ public class OrderValidator {
     }
 
 //    총 주문 금액 10,000원 이상부터 이벤트(할인?) 적용
+    public static boolean isDiscout(int payment){
+        if(payment >= 10000){
+            return true;
+        }
+        return false;
+    }
 }
