@@ -39,6 +39,8 @@ public class InputValidator {
     }
 
 //    메뉴 입력이 예시와 다름
+
+
 //    메뉴 개수가 1 이상이 아님
 
 

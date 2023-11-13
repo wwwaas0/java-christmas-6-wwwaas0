@@ -1,6 +1,6 @@
 package christmas.model;
 
-public enum Menu {
+public enum MunuDetails {/*
     MUSHROOM_SOUP("애피타이저", 6000, "양송이수프"),
     TAPAS("애피타이저", 5500, "타파스"),
     CAESAR_SALAD("애피타이저",8000, "시저샐러드"),
@@ -15,24 +15,5 @@ public enum Menu {
     CHAMPAGNE("음료",25000, "샴페인");
 
     private final String category;
-    private final int price;
-    private final String koreanName;
-
-    Menu(String category, int price, String koreanName) {
-        this.category = category;
-        this.price = price;
-        this.koreanName = koreanName;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public String getKoreanName() {
-        return koreanName;
-    }
+    private final int price;*/
 }
