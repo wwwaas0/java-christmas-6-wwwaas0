@@ -13,15 +13,25 @@ public class Discount {
         this.discounts = discounts;
     }
 
-    //    총 주문 금액 10,000원 이상부터 이벤트(할인?) 적용
-
 
     //    날짜를 매개변수에 받고, 어떤 할인이 해당되는지 반환
     public List<DiscountType> getDiscounts(int date, int paymentBeforeDiscount) {
         List<DiscountType> discountTypes = new ArrayList<>();
         if(isDiscout(paymentBeforeDiscount)){
             if(isGift(paymentBeforeDiscount)){
-                discountTypes.add(Dis)
+                discountTypes.add(DiscountType.GIFT);
+            }
+            if(isChristmasDay(date)){
+                discountTypes.add(DiscountType.CHRISTMAS_D_DAY);
+            }
+            if(isWeekday(date)){
+                discountTypes.add(DiscountType.WEEKDAY);
+            }
+            if(isWeekend(date)){
+                discountTypes.add(DiscountType.WEEKEND);
+            }
+            if(isSpecialDiscount(date)){
+                discountTypes.add(DiscountType.SPECIAL);
             }
         }
     }
