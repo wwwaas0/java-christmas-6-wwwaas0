@@ -7,10 +7,8 @@ import java.util.List;
 
 public class Discount {
     private final List<DiscountType> discounts;
-//
 
     public Discount(List<DiscountType> discounts) {
-
         this.discounts = discounts;
     }
 
@@ -39,6 +37,7 @@ public class Discount {
                 discountTypes.add(DiscountType.SPECIAL);
             }
         }
+        return discounts;
     }
 
     private boolean isDiscout(int paymentBeforeDiscount) {
