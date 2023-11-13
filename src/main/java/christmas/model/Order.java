@@ -14,13 +14,14 @@ public class Order {
         this.totalPayment = totalPayment;
     }
 
-    public void orderProcessing(String orders){
+    public HashMap<Menu, Integer> orderProcessing(String orders){
         List<String> orderItems = List.of(orders.split(","));
         for(String item: orderItems){
             List<String> menuAndNumber = List.of(item.split("-"));
             Menu menu = getMenuByKoreanName(menuAndNumber.get(0));
             this.orders.put(menu, Integer.parseInt(menuAndNumber.get(1)));
         }
+        return this.orders;
     }
 
     private static Menu getMenuByKoreanName(String koreanName) {
@@ -30,5 +31,9 @@ public class Order {
             }
         }
         return null;
+    }
+
+    private void validate(){
+
     }
 }
