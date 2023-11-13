@@ -18,4 +18,8 @@ public class VisitDate {
         InputValidator.outOfRange(intDate);
         return intDate;
     }
+
+    public int getVisitDate() {
+        return visitDate;
+    }
 }

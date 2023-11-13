@@ -10,4 +10,8 @@ public enum DiscountType {
     DiscountType(int discountPrice) {
         this.discountPrice = discountPrice;
     }
+
+    public int getDiscountPrice() {
+        return discountPrice;
+    }
 }
