@@ -41,5 +41,6 @@ public class Order {
 
     private void validate(HashMap<Menu, Integer> orders){
         InputValidator.notOnTheMenu(orders);
+        InputValidator.moreThan1(orders.values());
     }
 }
