@@ -8,9 +8,9 @@ import java.util.HashMap;
 public class InputValidator {
     //    식당 방문 날짜
 //    숫자 아닌 것 입력
-    public static void isDigit(String date) {
+    public static int isDigit(String date) {
         try {
-            Integer.parseInt(date);
+            return Integer.parseInt(date);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("입력이 숫자가 아닙니다.");
         }

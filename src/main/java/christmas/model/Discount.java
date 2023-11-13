@@ -1,5 +1,7 @@
 package christmas.model;
 
+import christmas.validator.InputValidator;
+
 import java.util.List;
 
 public class Discount {
@@ -11,5 +13,9 @@ public class Discount {
         this.visitDate = visitDate;
     }
 
+    private void validate(String date) {
+        int intDate = InputValidator.isDigit(date);
+        InputValidator.outOfRange(intDate);
+    }
 //    날짜를 매개변수에 받고, 어떤 할인이 해당되는지 반환
 }
