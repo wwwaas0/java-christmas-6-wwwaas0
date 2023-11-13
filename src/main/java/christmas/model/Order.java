@@ -1,6 +1,7 @@
 package christmas.model;
 
 import christmas.validator.InputValidator;
+import christmas.validator.OrderValidator;
 import christmas.view.InputView;
 
 import java.util.HashMap;
@@ -43,5 +44,7 @@ public class Order {
     private void validate(HashMap<Menu, Integer> orders){
         InputValidator.notOnTheMenu(orders);
         InputValidator.moreThan1(orders.values());
+        OrderValidator.maxOrder(orders);
+        OrderValidator.isOnlyDrinks(orders);
     }
 }
