@@ -13,9 +13,14 @@ public class Discount {
         this.visitDate = visitDate;
     }
 
-    private void validate(String date) {
+    public Discount(String visitDate) {
+        this.visitDate = validate(visitDate);
+    }
+
+    private int validate(String date) {
         int intDate = InputValidator.isDigit(date);
         InputValidator.outOfRange(intDate);
+        return intDate;
     }
 
     //    총 주문 금액 10,000원 이상부터 이벤트(할인?) 적용

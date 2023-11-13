@@ -1,10 +1,17 @@
 package christmas.controller;
 
+import christmas.model.Discount;
+import christmas.view.InputView;
+
 public class InputController {
 //    get식당 예상 방문 날짜
     /*
     InputView에서 입력 받은 후, Discount 객체에 저장
      */
+    public Discount getVisitDate(){
+        Discount discount = new Discount(InputView.visitDate());
+        return discount;
+    }
 
 //    get주문할 메뉴 및 개수
     /*
