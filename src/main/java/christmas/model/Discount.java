@@ -10,7 +10,12 @@ public class Discount {
 //
 
     public Discount(List<DiscountType> discounts) {
+
         this.discounts = discounts;
+    }
+
+    public Discount(int date, int paymentBeforeDiscount) {
+        this.discounts = getDiscounts(date, paymentBeforeDiscount);
     }
 
 
