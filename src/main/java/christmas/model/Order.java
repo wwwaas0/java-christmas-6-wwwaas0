@@ -21,7 +21,8 @@ public class Order {
             for(String item: orderItems){
                 List<String> menuAndNumber = List.of(item.split("-"));
                 Menu menu = getMenuByKoreanName(menuAndNumber.get(0));
-                this.orders.put(menu, Integer.parseInt(menuAndNumber.get(1)));
+                int menuNumber = this.orders.getOrDefault(menu, 0) + Integer.parseInt(menuAndNumber.get(1));
+                this.orders.put(menu, menuNumber);
             }
             validate(this.orders);
             return this.orders;
