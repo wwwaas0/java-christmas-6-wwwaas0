@@ -11,6 +11,7 @@ public class DiscountController {
     private static int date;
     private static int totalPaymentBeforeDiscount;
     private static int totalDiscountAmount;
+    private static Order order;
 
     //    start 메소드
     public void start() {
@@ -23,7 +24,7 @@ public class DiscountController {
 
     //  get할인 전 총 주문 금액 구하기
     private void getTotalPaymentBefore() {
-        Order order = inputController.getOrders();
+        order = inputController.getOrders();
         OutputView.info(date);
         OutputView.orderMenu(order);
 
@@ -44,10 +45,6 @@ public class DiscountController {
     }
 
     //    get 해당되는 할인 내역 구하기
-    /*
-    input controller에서 크리스마스 디데이 추가 할인 금액 받아오기
-    Discount 클래스에서 방문 날짜, 할인 전 총 주문 금액 주고 어떤 할인이 적용되는지 리스트로 받아오기
-     */
     private List<DiscountType> getDiscounts() {
         Discount discount = new Discount(date, totalPaymentBeforeDiscount);
         OutputView.totalDiscounts(discount.getDiscounts());
@@ -63,16 +60,21 @@ public class DiscountController {
     할인 내역 매개변수로 받은 다음, 총 할인 금액 계산
      */
     private void getTotalDiscount() {
-        int christmasDiscount = inputController.howMuchChristmasDiscount(date);
         List<DiscountType> discountTypes = getDiscounts();
 
         int totalDiscount = 0;
         for (DiscountType discountType : discountTypes) {
 
             if (discountType == DiscountType.CHRISTMAS_D_DAY) {
-                totalDiscount += christmasDiscount;
+                totalDiscount += inputController.howMuchChristmasDiscount(date);
             }
-            if (discountType != DiscountType.CHRISTMAS_D_DAY) {
+            if (discountType == DiscountType.WEEKDAY) {
+                totalDiscount += inputController.howMuchWeekdayDiscount(order);
+            }
+            if (discountType == DiscountType.WEEKEND) {
+                totalDiscount += inputController.howMuchWeekendDiscount(order);
+            }
+            if (discountType == DiscountType.GIFT || discountType == DiscountType.SPECIAL) {
                 totalDiscount += discountType.getDiscountPrice();
             }
         }
