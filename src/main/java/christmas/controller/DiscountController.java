@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.model.*;
+import christmas.view.OutputView;
 
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +31,7 @@ public class DiscountController {
             total += price * number;
         }
         totalPaymentBeforeDiscount = total;
+        OutputView.paymentBeforDiscount(totalPaymentBeforeDiscount);
     }
 
     private void getVisiteDate() {
