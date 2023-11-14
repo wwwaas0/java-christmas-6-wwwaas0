@@ -9,7 +9,8 @@ import java.util.List;
 public class OutputView {
     //    주문 메뉴 출력
     public static void orderMenu(Order order) {
-        System.out.println("<주문 메뉴>");
+        System.out.println("12월 3일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
+        System.out.println("\n<주문 메뉴>");
         for (Menu menu : order.getOrders().keySet()) {
             System.out.println(menu.getKoreanName() + " " + order.getOrders().get(menu) + "개");
         }

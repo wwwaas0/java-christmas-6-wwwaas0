@@ -24,16 +24,24 @@ public class Order {
 
     private HashMap<Menu, Integer> orderProcessing(String orders) {
         try {
+            HashMap<Menu, Integer> newOrders = new HashMap<>();
             List<String> orderItems = List.of(orders.split(","));
+
+            System.out.println(orderItems);
+
             for (String item : orderItems) {
                 List<String> menuAndNumber = List.of(item.split("-"));
+
+                System.out.println(menuAndNumber);
+
                 Menu menu = getMenuByKoreanName(menuAndNumber.get(0));
-                int menuNumber = this.orders.getOrDefault(menu, 0) + Integer.parseInt(menuAndNumber.get(1));
-                this.orders.put(menu, menuNumber);
+                int menuNumber = newOrders.getOrDefault(menu, 0) + Integer.parseInt(menuAndNumber.get(1));
+                newOrders.put(menu, menuNumber);
             }
-            validate(this.orders);
-            return this.orders;
+            validate(newOrders);
+            return newOrders;
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             throw new IllegalArgumentException("알맞지 않은 주문 형식입니다.");
         }
     }
