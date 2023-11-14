@@ -40,12 +40,17 @@ public class InputController {
 
     public int howMuchWeekdayDiscount(Order order) {
         DiscountType discountWeekday = DiscountType.WEEKDAY;
-        int desertNumber = order.getOrders().get(Menu.CHOCOLATE_CAKE) + order.getOrders().get(Menu.ICE_CREAM);
+        int desertNumber = order.getOrders().getOrDefault(Menu.CHOCOLATE_CAKE, 0) + order.getOrders().getOrDefault(Menu.ICE_CREAM, 0);
         int discount = discountWeekday.getDiscountPrice() * desertNumber;
         return discount;
     }
 
-    public int howMuchWeekendDiscount(int mainNumber, Order order) {
+    public int howMuchWeekendDiscount(Order order) {
+        DiscountType discountWeekend = DiscountType.WEEKEND;
+        int mainNumber = order.getOrders().getOrDefault(Menu.BBQ_RIB, 0) + order.getOrders().getOrDefault(Menu.CHRISTMAS_PASTA, 0)
+                + order.getOrders().getOrDefault(Menu.SEAFOOD_PASTA, 0) + order.getOrders().getOrDefault(Menu.T_BONE_STEAK, 0);
+        int discount = discountWeekend.getDiscountPrice() * mainNumber;
 
+        return discount;
     }
 }

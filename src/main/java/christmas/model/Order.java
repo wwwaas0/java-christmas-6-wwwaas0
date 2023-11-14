@@ -10,10 +10,6 @@ import java.util.List;
 public class Order {
     private final HashMap<Menu, Integer> orders;
 
-//    public Order(HashMap<Menu, Integer> orders) {
-//        this.orders = orders;
-//    }
-
     public Order(String orders) {
         this.orders = orderProcessing(orders);
     }
