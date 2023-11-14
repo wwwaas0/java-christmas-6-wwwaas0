@@ -47,7 +47,6 @@ public class DiscountController {
      */
     private List<DiscountType> getDiscounts() {
         Discount discount = new Discount(date, totalPaymentBeforeDiscount);
-        System.out.println("discount 타입들: "+discount.getDiscounts());
         return discount.getDiscounts();
     }
 

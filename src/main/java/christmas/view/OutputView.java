@@ -7,9 +7,12 @@ import christmas.model.Order;
 import java.util.List;
 
 public class OutputView {
+    public static void info(int date){
+        System.out.println("12월 +"+date+"일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
+    }
+
     //    주문 메뉴 출력
     public static void orderMenu(Order order) {
-        System.out.println("12월 3일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
         System.out.println("\n<주문 메뉴>");
         for (Menu menu : order.getOrders().keySet()) {
             System.out.println(menu.getKoreanName() + " " + order.getOrders().get(menu) + "개");
@@ -50,7 +53,13 @@ public class OutputView {
     //    총 혜택 금액 출력
     public static void totalDiscountPayment(int payment) {
         System.out.println("\n<총혜택 금액>");
-        System.out.println(String.format("-%,d원", payment));
+        if(payment == 0){
+            System.out.println(String.format("%,d원", payment));
+        }
+        if(payment != 0){
+            System.out.println(String.format("-%,d원", payment));
+        }
+
     }
 
     //    할인 후 예상 결제 금액 출력
@@ -61,6 +70,7 @@ public class OutputView {
 
     //    12월 이벤트 배지 출력
     public static void eventOnDecember(int totalDiscount) {
+        System.out.println("\n<12월 이벤트 배지>");
         if (totalDiscount < 5000) {
             System.out.println("없음");
         }
