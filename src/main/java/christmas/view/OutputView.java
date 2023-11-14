@@ -41,18 +41,22 @@ public class OutputView {
     public static void totalDiscounts(List<DiscountType> discountTypes) {
         System.out.println("\n<혜택 내역>");
         for (DiscountType discountType : discountTypes) {
-            System.out.println();
+            System.out.println(String.format(""));
             //할인 한국어 이름도 이넘 상수에 추가하기
         }
     }
 
-//    총 혜택 금액 출력
-    public static void totalDiscountPayment(int payment){
+    //    총 혜택 금액 출력
+    public static void totalDiscountPayment(int payment) {
         System.out.println("\n<총혜택 금액>");
-        System.out.println("-"+payment);
+        System.out.println(String.format("-%,d", payment));
     }
 
-//    할인 후 예상 결제 금액 출력
+    //    할인 후 예상 결제 금액 출력
+    public static void expectedPayment(int payment) {
+        System.out.println("\n<할인 후 예상 결제 금액>");
+        System.out.println(String.format("%,d원", payment));
+    }
 
 //    12월 이벤트 배지 출력
     /*

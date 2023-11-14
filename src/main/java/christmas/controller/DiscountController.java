@@ -80,7 +80,8 @@ public class DiscountController {
     총 주문 금액, 총 할인 금액 매개변수로 받아서 예상 결제 금액 구하기
     할인 후 예상 결제 금액 = 할인 전 총주문 금액 - 할인 금액
      */
-    private int getExpectedPayment() {
-        return totalPaymentBeforeDiscount - totalDiscountAmount;
+    private void getExpectedPayment() {
+        int expectedAmount = totalPaymentBeforeDiscount - totalDiscountAmount;
+        OutputView.expectedPayment(expectedAmount);
     }
 }
