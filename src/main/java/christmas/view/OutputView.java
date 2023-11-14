@@ -1,7 +1,15 @@
 package christmas.view;
 
+import christmas.model.Menu;
+import christmas.model.Order;
+
 public class OutputView {
-//    주문 메뉴 출력
+    //    주문 메뉴 출력
+    public static void orderMenu(Order order) {
+        for (Menu menu : order.getOrders().keySet()) {
+            System.out.println(menu.getKoreanName() + " " + order.getOrders().get(menu) + "개");
+        }
+    }
 
 //    할인 전 총 주문 금액 출력
 

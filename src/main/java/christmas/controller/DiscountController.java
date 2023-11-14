@@ -15,7 +15,7 @@ public class DiscountController {
     public void start() {
         getVisiteDate();
         getTotalPaymentBefore();
-        getTotalPaymentAfter();
+        getTotalDiscount();
         getExpectedPayment();
     }
 
@@ -55,7 +55,7 @@ public class DiscountController {
         /*
     할인 내역 매개변수로 받은 다음, 총 할인 금액 계산
      */
-    private void getTotalPaymentAfter() {
+    private void getTotalDiscount() {
         int christmasDiscount = inputController.howMuchChristmasDiscount(date);
         List<DiscountType> discountTypes = getDiscounts();
 

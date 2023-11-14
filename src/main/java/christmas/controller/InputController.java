@@ -22,6 +22,7 @@ public class InputController {
      */
     public Order getOrders() {
         Order order = new Order(InputView.orderMenus());
+
         return order;
     }
 
