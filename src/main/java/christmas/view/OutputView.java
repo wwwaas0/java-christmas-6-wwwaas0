@@ -13,6 +13,7 @@ public class OutputView {
 
 //    할인 전 총 주문 금액 출력
 
+
 //    증정 메뉴 출력
     /*
     boolean값으로 증정 메뉴 있는지 없는지 받아와서
