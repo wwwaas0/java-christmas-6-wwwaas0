@@ -50,7 +50,7 @@ public class OutputView {
     //    총 혜택 금액 출력
     public static void totalDiscountPayment(int payment) {
         System.out.println("\n<총혜택 금액>");
-        System.out.println(String.format("-%,d", payment));
+        System.out.println(String.format("-%,d원", payment));
     }
 
     //    할인 후 예상 결제 금액 출력
@@ -60,13 +60,6 @@ public class OutputView {
     }
 
     //    12월 이벤트 배지 출력
-    /*
-    총 혜택 금액을 매개 변수로 받고 그에 따라 출력
-    5천 원 미만: 없음
-    5천 원 이상: 별
-    1만 원 이상: 트리
-    2만 원 이상: 산타
-     */
     public static void eventOnDecember(int totalDiscount) {
         if (totalDiscount < 5000) {
             System.out.println("없음");
