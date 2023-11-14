@@ -26,11 +26,6 @@ public class OutputView {
     }
 
     //    증정 메뉴 출력
-    /*
-    boolean값으로 증정 메뉴 있는지 없는지 받아와서
-    있으면, 샴페인 1개 증정
-    없으면, 없음 출력
-     */
     public static void giftMenu(boolean hasGift) {
         System.out.println("\n<증정 메뉴>");
         if (hasGift == true) {
@@ -45,7 +40,7 @@ public class OutputView {
     public static void totalDiscounts(List<DiscountType> discountTypes) {
         System.out.println("\n<혜택 내역>");
         for (DiscountType discountType : discountTypes) {
-            System.out.println(String.format(""));
+            System.out.println(String.format("%s: -%,d원", discountType.));
             //할인 한국어 이름도 이넘 상수에 추가하기
         }
     }

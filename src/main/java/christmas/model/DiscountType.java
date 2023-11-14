@@ -19,4 +19,8 @@ public enum DiscountType {
     public int getDiscountPrice() {
         return discountPrice;
     }
+
+    public String getKoreanName() {
+        return koreanName;
+    }
 }
