@@ -18,8 +18,7 @@ public class DiscountController {
         getVisiteDate();
         getTotalPaymentBefore();
         getTotalDiscount();
-        getExpectedPayment();
-        OutputView.eventOnDecember(totalDiscountAmount);
+//        getExpectedPayment();
     }
 
     //  get할인 전 총 주문 금액 구하기
@@ -53,22 +52,20 @@ public class DiscountController {
 
     //    총 할인 금액 구하기
     private void getTotalDiscount() {
-//        List<DiscountType> discountTypes = getDiscounts();
         HashMap<DiscountType, Integer> discountTypes = getDiscounts();
 
         int totalDiscount = 0;
         for (DiscountType discountType : discountTypes.keySet()) {
+            if(discountType != DiscountType.GIFT){
+                totalDiscountAmount += discountTypes.get(discountType);
+            }
             totalDiscount += discountTypes.get(discountType);
         }
-        totalDiscountAmount = totalDiscount;
-        OutputView.totalDiscountPayment(totalDiscountAmount);
+        OutputView.totalDiscountPayment(totalDiscount);
+        getExpectedPayment();
+        OutputView.eventOnDecember(totalDiscount);
     }
 
-    //    할인 후 예상 결제 금액 구하기
-    /*
-    총 주문 금액, 총 할인 금액 매개변수로 받아서 예상 결제 금액 구하기
-    할인 후 예상 결제 금액 = 할인 전 총주문 금액 - 할인 금액
-     */
     private void getExpectedPayment() {
         int expectedAmount = totalPaymentBeforeDiscount - totalDiscountAmount;
         OutputView.expectedPayment(expectedAmount);
