@@ -13,8 +13,9 @@ public class OutputView {
     }
 
 //    할인 전 총 주문 금액 출력
-    public static void paymentBeforDiscount(){
-
+    public static void paymentBeforDiscount(int payment){
+        System.out.println("\n<할인 전 총주문 금액>");
+        System.out.println(String.format("%,d원", payment));
     }
 
 //    증정 메뉴 출력
