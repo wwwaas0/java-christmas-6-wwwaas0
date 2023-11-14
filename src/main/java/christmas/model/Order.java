@@ -25,17 +25,30 @@ public class Order {
 
             for (String item : orderItems) {
                 List<String> menuAndNumber = List.of(item.split("-"));
-
-                Menu menu = getMenuByKoreanName(menuAndNumber.get(0));
-                int menuNumber = newOrders.getOrDefault(menu, 0) + Integer.parseInt(menuAndNumber.get(1));
-                newOrders.put(menu, menuNumber);
+                newOrders = isDuplicateMenu(menuAndNumber, newOrders);
             }
             validate(newOrders);
             return newOrders;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            throw new IllegalArgumentException("알맞지 않은 주문 형식입니다.");
+            System.out.println("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+            InputView.orderMenus();
         }
+        return null;
+    }
+
+    private HashMap<Menu, Integer> isDuplicateMenu(List<String> menuAndNumber, HashMap<Menu, Integer> newOrders) {
+        Menu menu = getMenuByKoreanName(menuAndNumber.get(0));
+        if (newOrders.containsKey(menu)) {
+            System.out.println("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+            InputView.orderMenus();
+        }
+        if (!newOrders.containsKey(menu)) {
+            int menuNumber = Integer.parseInt(menuAndNumber.get(1));
+            newOrders.put(menu, menuNumber);
+        }
+
+        return newOrders;
     }
 
     private static Menu getMenuByKoreanName(String koreanName) {
