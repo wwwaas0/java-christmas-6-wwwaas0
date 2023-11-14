@@ -4,43 +4,70 @@ import christmas.validator.InputValidator;
 import christmas.view.OutputView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Discount {
-    private final List<DiscountType> discounts;
+    private static final int SPECIAL_DISCOUNT = 1000;
+    private static final int GIFT_EVENT = 25000;
+    private static final int WEEKEND_DISCOUNT = 2023;
+    private static final int WEEKDAY_DISCOUNT = 2023;
+    private static final int CHRISTMAS_DISCOUNT = 1000;
+private final HashMap<DiscountType, Integer> discounts;
 
-    public Discount(int date, int paymentBeforeDiscount) {
-        this.discounts = getDiscounts(date, paymentBeforeDiscount);
+    public Discount(int date, int paymentBeforeDiscount, Order order) {
+        this.discounts = getDiscounts(date, paymentBeforeDiscount, order);
     }
 
-    public List<DiscountType> getDiscounts() {
+    public HashMap<DiscountType, Integer> getDiscounts() {
         return discounts;
     }
 
-    //    날짜를 매개변수에 받고, 어떤 할인이 해당되는지 반환
-    public List<DiscountType> getDiscounts(int date, int paymentBeforeDiscount) {
-        List<DiscountType> discountTypes = new ArrayList<>();
+    public HashMap<DiscountType, Integer> getDiscounts(int date, int paymentBeforeDiscount, Order order) {
+        HashMap<DiscountType, Integer> discountTypes = new HashMap<>();
         if(isDiscout(paymentBeforeDiscount)){
             if(isGift(paymentBeforeDiscount)){
-                discountTypes.add(DiscountType.GIFT);
+                discountTypes.put(DiscountType.GIFT, GIFT_EVENT);
             }
             if(isChristmasDay(date)){
-                discountTypes.add(DiscountType.CHRISTMAS_D_DAY);
+                discountTypes.put(DiscountType.CHRISTMAS_D_DAY, howMuchChristmasDiscount(date));
             }
             if(isWeekday(date)){
-                discountTypes.add(DiscountType.WEEKDAY);
+                discountTypes.put(DiscountType.WEEKDAY, howMuchWeekdayDiscount(order));
             }
             if(isWeekend(date)){
-                discountTypes.add(DiscountType.WEEKEND);
+                discountTypes.put(DiscountType.WEEKEND, howMuchWeekendDiscount(order));
             }
             if(isSpecialDiscount(date)){
-                discountTypes.add(DiscountType.SPECIAL);
+                discountTypes.put(DiscountType.SPECIAL, SPECIAL_DISCOUNT);
             }
         }
         if(!isDiscout(paymentBeforeDiscount)){
-            discountTypes.add(DiscountType.NO_DISCOUNT);
+            discountTypes.put(DiscountType.NO_DISCOUNT, 0);
         }
         return discountTypes;
+    }
+
+    public int howMuchChristmasDiscount(int visitDate) {
+        int more = visitDate - 1;
+        int totalDiscount = CHRISTMAS_DISCOUNT + more * 100;
+        return totalDiscount;
+    }
+
+    public int howMuchWeekdayDiscount(Order order) {
+        DiscountType discountWeekday = DiscountType.WEEKDAY;
+        int desertNumber = order.getOrders().getOrDefault(Menu.CHOCOLATE_CAKE, 0) + order.getOrders().getOrDefault(Menu.ICE_CREAM, 0);
+        int discount = WEEKDAY_DISCOUNT * desertNumber;
+        return discount;
+    }
+
+    public int howMuchWeekendDiscount(Order order) {
+        DiscountType discountWeekend = DiscountType.WEEKEND;
+        int mainNumber = order.getOrders().getOrDefault(Menu.BBQ_RIB, 0) + order.getOrders().getOrDefault(Menu.CHRISTMAS_PASTA, 0)
+                + order.getOrders().getOrDefault(Menu.SEAFOOD_PASTA, 0) + order.getOrders().getOrDefault(Menu.T_BONE_STEAK, 0);
+        int discount = WEEKEND_DISCOUNT * mainNumber;
+
+        return discount;
     }
 
     private boolean isDiscout(int paymentBeforeDiscount) {

@@ -45,38 +45,20 @@ public class DiscountController {
     }
 
     //    get 해당되는 할인 내역 구하기
-    private List<DiscountType> getDiscounts() {
-        Discount discount = new Discount(date, totalPaymentBeforeDiscount);
+    private HashMap<DiscountType, Integer> getDiscounts() {
+        Discount discount = new Discount(date, totalPaymentBeforeDiscount, order);
         OutputView.totalDiscounts(discount.getDiscounts());
         return discount.getDiscounts();
     }
 
     //    총 할인 금액 구하기
-    /*
-    총 할인 금액, 증정 메뉴 있는지 없는지 매개변수로 받아와서 총 할인 금액 계산
-    총 할인 금액 = 할인 금액의 합계 + 증정 메뉴의 가격
-     */
-        /*
-    할인 내역 매개변수로 받은 다음, 총 할인 금액 계산
-     */
     private void getTotalDiscount() {
-        List<DiscountType> discountTypes = getDiscounts();
+//        List<DiscountType> discountTypes = getDiscounts();
+        HashMap<DiscountType, Integer> discountTypes = getDiscounts();
 
         int totalDiscount = 0;
-        for (DiscountType discountType : discountTypes) {
-
-            if (discountType == DiscountType.CHRISTMAS_D_DAY) {
-                totalDiscount += inputController.howMuchChristmasDiscount(date);
-            }
-            if (discountType == DiscountType.WEEKDAY) {
-                totalDiscount += inputController.howMuchWeekdayDiscount(order);
-            }
-            if (discountType == DiscountType.WEEKEND) {
-                totalDiscount += inputController.howMuchWeekendDiscount(order);
-            }
-            if (discountType == DiscountType.GIFT || discountType == DiscountType.SPECIAL) {
-                totalDiscount += discountType.getDiscountPrice();
-            }
+        for (DiscountType discountType : discountTypes.keySet()) {
+            totalDiscount += discountTypes.get(discountType);
         }
         totalDiscountAmount = totalDiscount;
         OutputView.totalDiscountPayment(totalDiscountAmount);

@@ -4,6 +4,7 @@ import christmas.model.DiscountType;
 import christmas.model.Menu;
 import christmas.model.Order;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class OutputView {
@@ -37,11 +38,11 @@ public class OutputView {
     }
 
     //    혜택 내역 출력
-    public static void totalDiscounts(List<DiscountType> discountTypes) {
+    public static void totalDiscounts(HashMap<DiscountType, Integer> discountTypes) {
         System.out.println("\n<혜택 내역>");
-        for (DiscountType discountType : discountTypes) {
+        for (DiscountType discountType : discountTypes.keySet()) {
             if(discountType != DiscountType.NO_DISCOUNT){
-                System.out.println(String.format("%s: -%,d원", discountType.getKoreanName(), discountType.getDiscountPrice()));
+                System.out.println(String.format("%s: -%,d원", discountType.getKoreanName(), discountTypes.get(discountType)));
             }
             if(discountType == DiscountType.NO_DISCOUNT){
                 System.out.println("없음");
