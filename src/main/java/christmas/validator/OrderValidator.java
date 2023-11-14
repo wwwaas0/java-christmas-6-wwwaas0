@@ -5,7 +5,6 @@ import christmas.model.Menu;
 import java.util.HashMap;
 
 public class OrderValidator {
-    //    음료만 주문시 주문 불가
     public static void isOnlyDrinks(HashMap<Menu, Integer> orders) {
         boolean othersWithoutDrinks = false;
         for (Menu menu : orders.keySet()) {
@@ -18,7 +17,6 @@ public class OrderValidator {
         }
     }
 
-    //    메뉴는 한번에 최대 20개까지만 주문 가능
     public static void maxOrder(HashMap<Menu, Integer> orders) {
         if (orders.keySet().size() > 20) {
             throw new IllegalArgumentException("[ERROR] 메뉴는 한 번에 최대 20개까지만 주문 가능합니다.");

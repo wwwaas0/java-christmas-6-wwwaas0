@@ -13,15 +13,12 @@ public class DiscountController {
     private static int totalDiscountAmount;
     private static Order order;
 
-    //    start 메소드
     public void start() {
         getVisiteDate();
         getTotalPaymentBefore();
         getTotalDiscount();
-//        getExpectedPayment();
     }
 
-    //  get할인 전 총 주문 금액 구하기
     private void getTotalPaymentBefore() {
         order = inputController.getOrders();
         OutputView.info(date);
@@ -43,14 +40,12 @@ public class DiscountController {
         date = visitDate.getVisitDate();
     }
 
-    //    get 해당되는 할인 내역 구하기
     private HashMap<DiscountType, Integer> getDiscounts() {
         Discount discount = new Discount(date, totalPaymentBeforeDiscount, order);
         OutputView.totalDiscounts(discount.getDiscounts());
         return discount.getDiscounts();
     }
 
-    //    총 할인 금액 구하기
     private void getTotalDiscount() {
         HashMap<DiscountType, Integer> discountTypes = getDiscounts();
 
