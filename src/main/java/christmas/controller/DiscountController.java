@@ -46,7 +46,7 @@ public class DiscountController {
         return discount.getDiscounts();
     }
 
-//    총 할인 금액 구하기
+    //    총 할인 금액 구하기
     /*
     총 할인 금액, 증정 메뉴 있는지 없는지 매개변수로 받아와서 총 할인 금액 계산
     총 할인 금액 = 할인 금액의 합계 + 증정 메뉴의 가격
@@ -54,10 +54,20 @@ public class DiscountController {
         /*
     할인 내역 매개변수로 받은 다음, 총 할인 금액 계산
      */
-    private void getTotalPaymentAfter(){
+    private void getTotalPaymentAfter() {
         int christmasDiscount = inputController.howMuchChristmasDiscount(date);
         List<DiscountType> discountTypes = getDiscounts();
 
+        int totalDiscount = 0;
+        for (DiscountType discountType : discountTypes) {
+
+            if (discountType == DiscountType.CHRISTMAS_D_DAY) {
+                totalDiscount += christmasDiscount;
+            }
+            if (discountType != DiscountType.CHRISTMAS_D_DAY) {
+                totalDiscount += discountType.getDiscountPrice();
+            }
+        }
     }
 
 //    할인 후 예상 결제 금액 구하기
