@@ -1,6 +1,7 @@
 package christmas.model;
 
 import christmas.validator.InputValidator;
+import christmas.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,8 +49,10 @@ public class Discount {
 
     private boolean isGift(int paymentBeforeDiscount) {
         if(paymentBeforeDiscount >= 120000){
+            OutputView.giftMenu(true);
             return true;
         }
+        OutputView.giftMenu(false);
         return false;
     }
 

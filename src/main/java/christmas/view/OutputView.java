@@ -24,6 +24,15 @@ public class OutputView {
     있으면, 샴페인 1개 증정
     없으면, 없음 출력
      */
+    public static void giftMenu(boolean hasGift){
+        System.out.println("<증정 메뉴>");
+        if(hasGift == true){
+            System.out.println("샴페인 1개");
+        }
+        if(hasGift == false){
+            System.out.println("없음");
+        }
+    }
 
 //    혜택 내역 출력
 
