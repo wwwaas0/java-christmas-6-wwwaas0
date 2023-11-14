@@ -29,9 +29,9 @@ public class InputController {
     /*
     예상 방문 날짜 받아서 계산
      */
-    public int howMuchChristmasDiscount(VisitDate visitDate) {
+    public int howMuchChristmasDiscount(int visitDate) {
         DiscountType discountChristmas = DiscountType.CHRISTMAS_D_DAY;
-        int more = visitDate.getVisitDate() - 1;
+        int more = visitDate - 1;
         int totalDiscount = discountChristmas.getDiscountPrice() + more * 100;
         return totalDiscount;
     }

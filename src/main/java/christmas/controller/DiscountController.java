@@ -9,16 +9,17 @@ public class DiscountController {
     private static InputController inputController = new InputController();
     private static int date;
     private static int totalPaymentBeforeDiscount;
+    private static int totalPaymentAfterDiscount;
 
     //    start 메소드
     public void start() {
         getVisiteDate();
-        getTotalPayment();
-        getDiscounts(); //할인 금액 구할 때 사용?
+        getTotalPaymentBefore();
+        getTotalPaymentAfter();
     }
 
     //  get할인 전 총 주문 금액 구하기
-    private void getTotalPayment() {
+    private void getTotalPaymentBefore() {
         Order order = inputController.getOrders();
         HashMap<Menu, Integer> orders = order.getOrders();
         int total = 0;
@@ -53,6 +54,11 @@ public class DiscountController {
         /*
     할인 내역 매개변수로 받은 다음, 총 할인 금액 계산
      */
+    private void getTotalPaymentAfter(){
+        int christmasDiscount = inputController.howMuchChristmasDiscount(date);
+        List<DiscountType> discountTypes = getDiscounts();
+
+    }
 
 //    할인 후 예상 결제 금액 구하기
     /*
