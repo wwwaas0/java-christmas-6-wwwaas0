@@ -37,6 +37,9 @@ public class Discount {
                 discountTypes.add(DiscountType.SPECIAL);
             }
         }
+        if(!isDiscout(paymentBeforeDiscount)){
+
+        }
         return discounts;
     }
 

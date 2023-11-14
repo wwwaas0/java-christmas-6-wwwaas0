@@ -27,12 +27,8 @@ public class Order {
             HashMap<Menu, Integer> newOrders = new HashMap<>();
             List<String> orderItems = List.of(orders.split(","));
 
-            System.out.println(orderItems);
-
             for (String item : orderItems) {
                 List<String> menuAndNumber = List.of(item.split("-"));
-
-                System.out.println(menuAndNumber);
 
                 Menu menu = getMenuByKoreanName(menuAndNumber.get(0));
                 int menuNumber = newOrders.getOrDefault(menu, 0) + Integer.parseInt(menuAndNumber.get(1));

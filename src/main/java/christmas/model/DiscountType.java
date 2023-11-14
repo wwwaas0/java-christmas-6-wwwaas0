@@ -5,7 +5,9 @@ public enum DiscountType {
     WEEKDAY(2023),
     WEEKEND(2023),
     SPECIAL(1000),
-    GIFT(25000);
+    GIFT(25000),
+    NO_DISCOUNT(0);
+
     private final int discountPrice;
 
     DiscountType(int discountPrice) {
