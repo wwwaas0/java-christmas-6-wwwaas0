@@ -18,6 +18,7 @@ public class DiscountController {
         getTotalPaymentBefore();
         getTotalDiscount();
         getExpectedPayment();
+        OutputView.eventOnDecember(totalDiscountAmount);
     }
 
     //  get할인 전 총 주문 금액 구하기

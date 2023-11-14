@@ -58,7 +58,7 @@ public class OutputView {
         System.out.println(String.format("%,d원", payment));
     }
 
-//    12월 이벤트 배지 출력
+    //    12월 이벤트 배지 출력
     /*
     총 혜택 금액을 매개 변수로 받고 그에 따라 출력
     5천 원 미만: 없음
@@ -66,4 +66,18 @@ public class OutputView {
     1만 원 이상: 트리
     2만 원 이상: 산타
      */
+    public static void eventOnDecember(int totalDiscount) {
+        if (totalDiscount < 5000) {
+            System.out.println("없음");
+        }
+        if (totalDiscount >= 5000 || totalDiscount < 10000) {
+            System.out.println("별");
+        }
+        if (totalDiscount >= 10000 || totalDiscount < 20000) {
+            System.out.println("트리");
+        }
+        if (totalDiscount >= 20000) {
+            System.out.println("산타");
+        }
+    }
 }
