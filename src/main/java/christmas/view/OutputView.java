@@ -8,7 +8,7 @@ import java.util.List;
 
 public class OutputView {
     public static void info(int date){
-        System.out.println("12월 +"+date+"일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
+        System.out.println("12월 "+date+"일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
     }
 
     //    주문 메뉴 출력
@@ -40,8 +40,12 @@ public class OutputView {
     public static void totalDiscounts(List<DiscountType> discountTypes) {
         System.out.println("\n<혜택 내역>");
         for (DiscountType discountType : discountTypes) {
-            System.out.println(String.format("%s: -%,d원", discountType.));
-            //할인 한국어 이름도 이넘 상수에 추가하기
+            if(discountType != DiscountType.NO_DISCOUNT){
+                System.out.println(String.format("%s: -%,d원", discountType.getKoreanName(), discountType.getDiscountPrice()));
+            }
+            if(discountType == DiscountType.NO_DISCOUNT){
+                System.out.println("없음");
+            }
         }
     }
 

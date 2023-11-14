@@ -25,6 +25,7 @@ public class DiscountController {
     private void getTotalPaymentBefore() {
         Order order = inputController.getOrders();
         OutputView.info(date);
+        OutputView.orderMenu(order);
 
         HashMap<Menu, Integer> orders = order.getOrders();
         int total = 0;
@@ -49,6 +50,7 @@ public class DiscountController {
      */
     private List<DiscountType> getDiscounts() {
         Discount discount = new Discount(date, totalPaymentBeforeDiscount);
+        OutputView.totalDiscounts(discount.getDiscounts());
         return discount.getDiscounts();
     }
 
