@@ -8,10 +8,6 @@ import java.util.List;
 public class Discount {
     private final List<DiscountType> discounts;
 
-//    public Discount(List<DiscountType> discounts) {
-//        this.discounts = discounts;
-//    }
-
     public Discount(int date, int paymentBeforeDiscount) {
         this.discounts = getDiscounts(date, paymentBeforeDiscount);
     }
