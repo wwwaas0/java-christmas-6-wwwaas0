@@ -38,9 +38,9 @@ public class Discount {
             }
         }
         if(!isDiscout(paymentBeforeDiscount)){
-
+            discountTypes.add(DiscountType.NO_DISCOUNT);
         }
-        return discounts;
+        return discountTypes;
     }
 
     private boolean isDiscout(int paymentBeforeDiscount) {
