@@ -71,10 +71,10 @@ public class OutputView {
         if (totalDiscount < 5000) {
             System.out.println("없음");
         }
-        if (totalDiscount >= 5000 || totalDiscount < 10000) {
+        if (totalDiscount >= 5000 && totalDiscount < 10000) {
             System.out.println("별");
         }
-        if (totalDiscount >= 10000 || totalDiscount < 20000) {
+        if (totalDiscount >= 10000 && totalDiscount < 20000) {
             System.out.println("트리");
         }
         if (totalDiscount >= 20000) {
