@@ -6,13 +6,16 @@ import christmas.model.Order;
 public class OutputView {
     //    주문 메뉴 출력
     public static void orderMenu(Order order) {
+        System.out.println("<주문 메뉴>");
         for (Menu menu : order.getOrders().keySet()) {
             System.out.println(menu.getKoreanName() + " " + order.getOrders().get(menu) + "개");
         }
     }
 
 //    할인 전 총 주문 금액 출력
+    public static void paymentBeforDiscount(){
 
+    }
 
 //    증정 메뉴 출력
     /*
