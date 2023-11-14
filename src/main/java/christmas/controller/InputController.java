@@ -34,6 +34,18 @@ public class InputController {
         DiscountType discountChristmas = DiscountType.CHRISTMAS_D_DAY;
         int more = visitDate - 1;
         int totalDiscount = discountChristmas.getDiscountPrice() + more * 100;
+        System.out.println("크리스마스 디데이 할인 가격: " + totalDiscount);
         return totalDiscount;
+    }
+
+    public int howMuchWeekdayDiscount(Order order) {
+        DiscountType discountWeekday = DiscountType.WEEKDAY;
+        int desertNumber = order.getOrders().get(Menu.CHOCOLATE_CAKE) + order.getOrders().get(Menu.ICE_CREAM);
+        int discount = discountWeekday.getDiscountPrice() * desertNumber;
+        return discount;
+    }
+
+    public int howMuchWeekendDiscount(int mainNumber, Order order) {
+
     }
 }
