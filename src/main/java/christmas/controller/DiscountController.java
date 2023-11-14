@@ -24,6 +24,8 @@ public class DiscountController {
     //  get할인 전 총 주문 금액 구하기
     private void getTotalPaymentBefore() {
         Order order = inputController.getOrders();
+        OutputView.info(date);
+
         HashMap<Menu, Integer> orders = order.getOrders();
         int total = 0;
         for (Menu menu : orders.keySet()) {
