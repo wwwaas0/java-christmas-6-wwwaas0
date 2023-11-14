@@ -72,6 +72,7 @@ public class DiscountController {
             }
         }
         totalDiscountAmount = totalDiscount;
+        OutputView.totalDiscountPayment(totalDiscountAmount);
     }
 
     //    할인 후 예상 결제 금액 구하기

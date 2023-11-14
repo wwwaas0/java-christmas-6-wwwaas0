@@ -1,7 +1,10 @@
 package christmas.view;
 
+import christmas.model.DiscountType;
 import christmas.model.Menu;
 import christmas.model.Order;
+
+import java.util.List;
 
 public class OutputView {
     //    주문 메뉴 출력
@@ -12,31 +15,42 @@ public class OutputView {
         }
     }
 
-//    할인 전 총 주문 금액 출력
-    public static void paymentBeforDiscount(int payment){
+    //    할인 전 총 주문 금액 출력
+    public static void paymentBeforDiscount(int payment) {
         System.out.println("\n<할인 전 총주문 금액>");
         System.out.println(String.format("%,d원", payment));
     }
 
-//    증정 메뉴 출력
+    //    증정 메뉴 출력
     /*
     boolean값으로 증정 메뉴 있는지 없는지 받아와서
     있으면, 샴페인 1개 증정
     없으면, 없음 출력
      */
-    public static void giftMenu(boolean hasGift){
-        System.out.println("<증정 메뉴>");
-        if(hasGift == true){
+    public static void giftMenu(boolean hasGift) {
+        System.out.println("\n<증정 메뉴>");
+        if (hasGift == true) {
             System.out.println("샴페인 1개");
         }
-        if(hasGift == false){
+        if (hasGift == false) {
             System.out.println("없음");
         }
     }
 
-//    혜택 내역 출력
+    //    혜택 내역 출력
+    public static void totalDiscounts(List<DiscountType> discountTypes) {
+        System.out.println("\n<혜택 내역>");
+        for (DiscountType discountType : discountTypes) {
+            System.out.println();
+            //할인 한국어 이름도 이넘 상수에 추가하기
+        }
+    }
 
 //    총 혜택 금액 출력
+    public static void totalDiscountPayment(int payment){
+        System.out.println("\n<총혜택 금액>");
+        System.out.println("-"+payment);
+    }
 
 //    할인 후 예상 결제 금액 출력
 
