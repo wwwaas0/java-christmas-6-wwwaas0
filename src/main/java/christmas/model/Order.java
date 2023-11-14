@@ -9,14 +9,17 @@ import java.util.List;
 
 public class Order {
     private final HashMap<Menu, Integer> orders;
-//    private final int totalPayment;
 
-    public Order(HashMap<Menu, Integer> orders) {
-        this.orders = orders;
-    }
+//    public Order(HashMap<Menu, Integer> orders) {
+//        this.orders = orders;
+//    }
 
     public Order(String orders) {
         this.orders = orderProcessing(orders);
+    }
+
+    public HashMap<Menu, Integer> getOrders() {
+        return orders;
     }
 
     private HashMap<Menu, Integer> orderProcessing(String orders) {

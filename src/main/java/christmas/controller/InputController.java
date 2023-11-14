@@ -3,6 +3,8 @@ package christmas.controller;
 import christmas.model.*;
 import christmas.view.InputView;
 
+import java.util.List;
+
 public class InputController {
 
     //    get식당 예상 방문 날짜
