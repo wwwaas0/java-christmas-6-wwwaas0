@@ -18,7 +18,6 @@ public class InputValidator {
         return 0;
     }
 
-    //    1~31 벗어난 숫자 입력
     public static void outOfRange(int date) {
         if (date < 1 || date > 31) {
             System.out.println("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
