@@ -50,7 +50,14 @@ public class ValidatorTest {
     }
 
     //음료만 시킨 경우
+    @DisplayName("음료만 주문한 경우")
+    @Test
+    void 음료만_주문_테스트() {
+        String invalidOrder = "제로콜라-2,레드와인-1";
 
+        assertThatThrownBy(() -> new Order(invalidOrder))
+                .hasMessageContaining("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+    }
 
     //20개 넘는 메뉴 시킨 경우
 
