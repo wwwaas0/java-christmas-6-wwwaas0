@@ -5,7 +5,6 @@ import christmas.model.Menu;
 import christmas.model.Order;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class OutputView {
     public static void info(int date){

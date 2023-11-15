@@ -5,10 +5,6 @@ import christmas.validator.InputValidator;
 public class VisitDate {
     private final int visitDate;
 
-    public VisitDate(int visitDate) {
-        this.visitDate = visitDate;
-    }
-
     public VisitDate(String visitDate) {
         this.visitDate = validate(visitDate);
     }
