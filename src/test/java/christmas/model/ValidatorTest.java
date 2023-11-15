@@ -30,8 +30,7 @@ public class ValidatorTest {
                 .hasMessageContaining("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
     }
 
-    //중복되는 메뉴 주문
-    @DisplayName("주어진 주문 형식에 맞지 않는 경우")
+    @DisplayName("중복 주문한 경우")
     @Test
     void 중복_주문_테스트() {
         String invalidOrder = "티본스테이크-1,제로콜라-1,초코케이크-2,제로콜라-1";
@@ -41,7 +40,14 @@ public class ValidatorTest {
     }
 
     //메뉴에 없는 음식 주문
+    @DisplayName("메뉴에 없는 음식을 주문한 경우")
+    @Test
+    void 없는_메뉴_테스트() {
+        String invalidOrder = "티본스테이크-1,토마호크-1,제로콜라-1";
 
+        assertThatThrownBy(() -> new Order(invalidOrder))
+                .hasMessageContaining("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+    }
 
     //음료만 시킨 경우
 
